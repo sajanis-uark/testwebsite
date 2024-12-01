@@ -1,0 +1,22 @@
+name: Stylelint
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  stylelint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Run Stylelint
+        uses: actions-hub/stylelint@master
+        with:
+          files: '**/*.css'
+        continue-on-error: true
